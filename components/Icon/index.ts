@@ -1,3 +1,4 @@
 export { Icon } from './Icon';
 export { Sprite } from './Sprite';
-export type { IconProps } from './types';
+export type { IconProps, IconName } from './types';
+export { iconNames } from './icon-names';

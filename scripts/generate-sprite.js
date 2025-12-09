@@ -7,9 +7,11 @@ const __dirname = path.dirname(__filename);
 
 const iconsDir = path.join(__dirname, '../public/icons');
 const outputPath = path.join(__dirname, '../public/sprite.svg');
+const typesOutputPath = path.join(__dirname, '../components/Icon/icon-names.ts');
 
 // Read all SVG files from icons directory
-const iconFiles = fs.readdirSync(iconsDir).filter((file) => file.endsWith('.svg'));
+const iconFiles = fs.readdirSync(iconsDir).filter((file) => file.endsWith('.svg') && !file.startsWith('_'));
+const iconNames = iconFiles.map((file) => path.basename(file, '.svg'));
 
 // SVG sprite beginning
 let spriteContent = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">\n';
@@ -38,10 +40,24 @@ iconFiles.forEach((file) => {
     }
 });
 
-spriteContent += '</svg>';
-
 // Save sprite
 fs.writeFileSync(outputPath, spriteContent);
 
+// Generate TypeScript types for icon names
+const typeDefinition = `// Auto-generated file. Do not edit manually.
+// Generated from SVG files in public/icons/
+
+export const iconNames = [
+${iconNames.map((name) => `  '${name}'`).join(',\n')}
+] as const;
+
+export type IconName = typeof iconNames[number];
+`;
+
+fs.writeFileSync(typesOutputPath, typeDefinition);
+
+console.log(`✅ SVG sprite generated with ${iconFiles.length} icons`);
+console.log(`📁 Sprite: ${outputPath}`);
+console.log(`📁 Types: ${typesOutputPath}`);
 console.log(`✅ SVG sprite generated with ${iconFiles.length} icons`);
 console.log(`📁 Output: ${outputPath}`);

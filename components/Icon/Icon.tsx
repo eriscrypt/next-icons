@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
+import type { IconName } from './icon-names';
 
 type IconProps = {
-    name: string;
+    name: IconName;
     size?: number;
     color?: string;
     hoverColor?: string;
+    className?: string;
     onClick?: () => void;
 };
 
