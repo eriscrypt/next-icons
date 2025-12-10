@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 export function Sprite() {
-    const spritePath = path.join(process.cwd(), 'public', 'sprite.svg');
+    const spritePath = path.join(process.cwd(), 'public', '_sprite.svg');
 
     let spriteContent: string | null = null;
 

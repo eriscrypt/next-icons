@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const iconsDir = path.join(__dirname, '../public/icons');
-const outputPath = path.join(__dirname, '../public/sprite.svg');
+const outputPath = path.join(__dirname, '../public/_sprite.svg');
 const typesOutputPath = path.join(__dirname, '../components/Icon/icon-names.ts');
 
 // Read all SVG files from icons directory
