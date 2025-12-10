@@ -3,6 +3,7 @@
 import { Icon } from '@/components/Icon';
 import { dynamicComponent } from '@/utils/dynamic-component';
 import { useState } from 'react';
+// import { HugeComponent } from '@/components/HugeComponent';
 
 const HugeComponent = dynamicComponent(() => import('@/components/HugeComponent'), {
     exportName: 'HugeComponent',
