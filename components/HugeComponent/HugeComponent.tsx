@@ -41,7 +41,7 @@ export const HugeComponent: React.FC = () => {
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     // Large data array
-    const [largeData] = React.useState(() => generateLargeDataset(500));
+    const [largeData] = React.useState(() => generateLargeDataset(2000));
 
     // Multiple useEffect hooks to simulate complex logic
     React.useEffect(() => {
@@ -107,7 +107,7 @@ export const HugeComponent: React.FC = () => {
                 </div>
 
                 <p className="text-lg opacity-90">
-                    This component contains 500 data items, multiple states, effects, and heavy computations. Component size: ~
+                    This component contains 2000 data items, multiple states, effects, and heavy computations. Component size: ~
                     {Math.round(new Blob([JSON.stringify(largeData)]).size / 1024)}KB of data
                 </p>
 

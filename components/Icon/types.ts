@@ -1,5 +1,6 @@
 // Re-export auto-generated types
-export type { IconName } from './icon-names';
+import type { IconName } from './icon-names';
+export type { IconName };
 
 export type IconProps = {
     name: IconName;
