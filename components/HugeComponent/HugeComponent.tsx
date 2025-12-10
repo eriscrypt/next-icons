@@ -98,7 +98,7 @@ export const HugeComponent: React.FC = () => {
     };
 
     return (
-        <div className="p-8 bg-linear-to-br from-purple-500 to-pink-500 rounded-2xl shadow-2xl">
+        <div className="p-8 shadow-2xl bg-linear-to-br from-purple-500 to-pink-500 rounded-2xl">
             <div className="flex flex-col gap-6 text-white">
                 {/* Header Section */}
                 <div className="flex items-center gap-4">
@@ -112,7 +112,7 @@ export const HugeComponent: React.FC = () => {
                 </p>
 
                 {/* Statistics Panel */}
-                <div className="grid grid-cols-5 gap-4 bg-white/10 p-4 rounded-xl">
+                <div className="grid grid-cols-5 gap-4 p-4 bg-white/10 rounded-xl">
                     <div className="text-center">
                         <div className="text-2xl font-bold">{statistics.total}</div>
                         <div className="text-sm opacity-75">Total Items</div>
@@ -136,25 +136,25 @@ export const HugeComponent: React.FC = () => {
                 </div>
 
                 {/* Counter Section */}
-                <div className="flex flex-col gap-4 bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+                <div className="flex flex-col gap-4 p-6 bg-white/10 rounded-xl backdrop-blur-sm">
                     <div className="flex items-center justify-between">
                         <span className="text-xl">Counter: {count}</span>
                         <div className="flex gap-2">
                             <button
                                 onClick={() => setCount((c) => c - 1)}
-                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                                className="px-4 py-2 transition-colors rounded-lg bg-white/20 hover:bg-white/30"
                             >
                                 -
                             </button>
                             <button
                                 onClick={() => setCount(0)}
-                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                                className="px-4 py-2 transition-colors rounded-lg bg-white/20 hover:bg-white/30"
                             >
                                 Reset
                             </button>
                             <button
                                 onClick={() => setCount((c) => c + 1)}
-                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                                className="px-4 py-2 transition-colors rounded-lg bg-white/20 hover:bg-white/30"
                             >
                                 +
                             </button>
@@ -166,7 +166,7 @@ export const HugeComponent: React.FC = () => {
                         {Array.from({ length: 64 }).map((_, i) => (
                             <div
                                 key={i}
-                                className="aspect-square bg-white/20 rounded-lg animate-pulse"
+                                className="rounded-lg aspect-square bg-white/20 animate-pulse"
                                 style={{ animationDelay: `${i * 50}ms` }}
                             />
                         ))}
@@ -174,7 +174,7 @@ export const HugeComponent: React.FC = () => {
                 </div>
 
                 {/* Tabs Section */}
-                <div className="bg-white/10 p-4 rounded-xl">
+                <div className="p-4 bg-white/10 rounded-xl">
                     <div className="flex gap-2 mb-4">
                         {['Data', 'Charts', 'Settings', 'Analytics', 'Reports'].map((tab, idx) => (
                             <button
@@ -189,18 +189,18 @@ export const HugeComponent: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="text-center py-8 text-lg">
+                    <div className="py-8 text-lg text-center">
                         Active Tab: {['Data', 'Charts', 'Settings', 'Analytics', 'Reports'][activeTab]}
                     </div>
                 </div>
 
                 {/* Data Table Section */}
-                <div className="bg-white/10 p-6 rounded-xl">
+                <div className="p-6 bg-white/10 rounded-xl">
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-xl font-semibold">Data Table ({filteredData.length} items)</h3>
                         <button
                             onClick={() => setIsExpanded(!isExpanded)}
-                            className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                            className="px-4 py-2 transition-colors rounded-lg bg-white/20 hover:bg-white/30"
                         >
                             {isExpanded ? 'Collapse' : 'Expand'}
                         </button>
@@ -211,13 +211,13 @@ export const HugeComponent: React.FC = () => {
                         placeholder="Filter items..."
                         value={filterText}
                         onChange={(e) => setFilterText(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 mb-4"
+                        className="w-full px-4 py-2 mb-4 text-white rounded-lg bg-white/20 placeholder-white/60"
                     />
 
-                    <div className="text-sm mb-2">Selected: {selectedItems.size} items</div>
+                    <div className="mb-2 text-sm">Selected: {selectedItems.size} items</div>
 
                     {isExpanded && (
-                        <div className="max-h-96 overflow-y-auto space-y-2">
+                        <div className="space-y-2 overflow-y-auto max-h-96">
                             {filteredData.slice(0, 100).map((item) => (
                                 <div
                                     key={item.id}
@@ -226,11 +226,11 @@ export const HugeComponent: React.FC = () => {
                                         selectedItems.has(item.id) ? 'bg-white/30' : 'bg-white/10 hover:bg-white/20'
                                     }`}
                                 >
-                                    <div className="flex justify-between items-start">
+                                    <div className="flex items-start justify-between">
                                         <div>
                                             <div className="font-semibold">{item.name}</div>
                                             <div className="text-sm opacity-75">{item.description}</div>
-                                            <div className="text-xs mt-1 opacity-60">
+                                            <div className="mt-1 text-xs opacity-60">
                                                 {item.tags.join(', ')} • {item.metadata.status}
                                             </div>
                                         </div>
@@ -242,14 +242,14 @@ export const HugeComponent: React.FC = () => {
                                 </div>
                             ))}
                             {filteredData.length > 100 && (
-                                <div className="text-center py-4 text-sm opacity-75">... and {filteredData.length - 100} more items</div>
+                                <div className="py-4 text-sm text-center opacity-75">... and {filteredData.length - 100} more items</div>
                             )}
                         </div>
                     )}
                 </div>
 
                 {/* Icons Grid */}
-                <div className="flex gap-3 justify-center flex-wrap">
+                <div className="flex flex-wrap justify-center gap-3">
                     {Array.from({ length: 20 }).map((_, i) => (
                         <Icon
                             key={i}
@@ -264,12 +264,12 @@ export const HugeComponent: React.FC = () => {
                 {/* Footer with more data */}
                 <div className="grid grid-cols-3 gap-4">
                     {Array.from({ length: 12 }).map((_, i) => (
-                        <div key={i} className="bg-white/10 p-4 rounded-lg">
-                            <div className="text-lg font-semibold mb-2">Section {i + 1}</div>
+                        <div key={i} className="p-4 rounded-lg bg-white/10">
+                            <div className="mb-2 text-lg font-semibold">Section {i + 1}</div>
                             <div className="text-sm opacity-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                            <div className="mt-2 flex gap-2">
+                            <div className="flex gap-2 mt-2">
                                 {Array.from({ length: 3 }).map((_, j) => (
-                                    <div key={j} className="h-2 bg-white/20 rounded flex-1" />
+                                    <div key={j} className="flex-1 h-2 rounded bg-white/20" />
                                 ))}
                             </div>
                         </div>
