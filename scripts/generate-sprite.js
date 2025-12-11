@@ -29,9 +29,14 @@ iconFiles.forEach((file) => {
         const viewBoxMatch = iconContent.match(/viewBox="([^"]*)"/i);
         const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
-        // Remove fill and stroke attributes to allow color control from outside
-        innerContent = innerContent.replace(/\s+fill="[^"]*"/gi, '');
-        innerContent = innerContent.replace(/\s+stroke="[^"]*"/gi, '');
+        // Check if icon has preserve-color comment
+        const preserveColor = iconContent.includes('<!-- preserve-color -->');
+
+        // Remove fill and stroke attributes only for monochrome icons
+        if (!preserveColor) {
+            innerContent = innerContent.replace(/\s+fill="[^"]*"/gi, '');
+            innerContent = innerContent.replace(/\s+stroke="[^"]*"/gi, '');
+        }
 
         // Create symbol for each icon
         spriteContent += `  <symbol id="${iconName}" viewBox="${viewBox}">\n`;

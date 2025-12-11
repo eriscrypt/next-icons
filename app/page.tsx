@@ -133,6 +133,14 @@ export default function Home() {
                 <h1 className="text-4xl font-bold text-center text-white">SVG Icons</h1>
 
                 <div className="flex items-center justify-center gap-6 px-12 py-6 border rounded-2xl border-white/10">
+                    <Icon name="usdt" size={64} />
+                    <Icon name="atom" size={64} />
+                    <Icon name="wkava" size={64} />
+                    <Icon name="zodiac-cancer" size={224} />
+                    <Icon name="zodiac-unknown" size={200} />
+                </div>
+
+                <div className="flex items-center justify-center gap-6 px-12 py-6 border rounded-2xl border-white/10">
                     <Icon name="next" size={64} color="#10b9ae" hoverColor="#ef6f44" />
                     <Icon name="next" size={48} color="#10b981" hoverColor="#ef6f44" />
                     <Icon name="next" size={32} color="#0070f3" hoverColor="#ef6f44" />
